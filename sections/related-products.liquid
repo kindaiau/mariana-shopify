@@ -7,25 +7,37 @@
     {%- liquid
       assign products_count = section.settings.products_to_show
       assign current_product_id = product.id
+      assign related_collection = section.settings.related_collection
+      
+      # Use specified collection or fall back to first product collection
+      if related_collection != blank
+        assign collection_to_use = collections[related_collection]
+      elsif product.collections.size > 0
+        assign collection_to_use = product.collections.first
+      endif
     -%}
 
-    <div class="product-grid">
-      {% for product in product.collections.first.products limit: products_count %}
-        {% unless product.id == current_product_id %}
-          <div class="product-card">
-            <a href="{{ product.url }}">
-              {% if product.featured_image %}
-                {{ product.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: product.title }}
-              {% else %}
-                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-              {% endif %}
-              <h3 class="product-title">{{ product.title }}</h3>
-              <p class="product-price">{{ product.price | money }}</p>
-            </a>
-          </div>
-        {% endunless %}
-      {% endfor %}
-    </div>
+    {% if collection_to_use and collection_to_use.products.size > 0 %}
+      <div class="product-grid">
+        {%- assign products_shown = 0 -%}
+        {% for product_item in collection_to_use.products %}
+          {% if product_item.id != current_product_id and products_shown < products_count %}
+            <div class="product-card">
+              <a href="{{ product_item.url }}">
+                {% if product_item.featured_image %}
+                  {{ product_item.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: product_item.title }}
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+                <h3 class="product-title">{{ product_item.title }}</h3>
+                <p class="product-price">{{ product_item.price | money }}</p>
+              </a>
+            </div>
+            {%- assign products_shown = products_shown | plus: 1 -%}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
   </div>
 </div>
 
@@ -51,6 +63,12 @@
       "id": "heading",
       "label": "Heading",
       "default": "You may also like"
+    },
+    {
+      "type": "collection",
+      "id": "related_collection",
+      "label": "Related collection (optional)",
+      "info": "If not set, will use the product's first collection"
     },
     {
       "type": "range",

@@ -28,29 +28,31 @@
       </div>
     {% endif %}
 
-    <div class="product-grid">
-      {% for product in collection.products %}
-        <div class="product-card">
-          <a href="{{ product.url }}">
-            {% if product.featured_image %}
-              {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: product.title }}
-            {% else %}
-              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-            {% endif %}
-            <h3 class="product-title">{{ product.title }}</h3>
-            <p class="product-price">{{ product.price | money }}</p>
-          </a>
-        </div>
-      {% else %}
-        <p>No products in this collection.</p>
-      {% endfor %}
-    </div>
-
-    {% if paginate.pages > 1 %}
-      <div class="pagination">
-        {{ paginate | default_pagination }}
+    {% paginate collection.products by section.settings.products_per_page %}
+      <div class="product-grid">
+        {% for product in paginate.items %}
+          <div class="product-card">
+            <a href="{{ product.url }}">
+              {% if product.featured_image %}
+                {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: product.title }}
+              {% else %}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+              <h3 class="product-title">{{ product.title }}</h3>
+              <p class="product-price">{{ product.price | money }}</p>
+            </a>
+          </div>
+        {% else %}
+          <p>No products in this collection.</p>
+        {% endfor %}
       </div>
-    {% endif %}
+
+      {% if paginate.pages > 1 %}
+        <div class="pagination">
+          {{ paginate | default_pagination }}
+        </div>
+      {% endif %}
+    {% endpaginate %}
   </div>
 </div>
 

@@ -36,7 +36,10 @@ class CartManager {
       const data = await response.json();
       
       if (response.ok) {
-        this.updateCartCount(data);
+        // Fetch current cart to get accurate count
+        const cartResponse = await fetch('/cart.js');
+        const cartData = await cartResponse.json();
+        this.updateCartCount(cartData.item_count);
         this.showNotification('Item added to cart');
       } else {
         this.showNotification(data.description || 'Error adding to cart', 'error');
@@ -47,10 +50,10 @@ class CartManager {
     }
   }
 
-  updateCartCount(cartData) {
+  updateCartCount(itemCount) {
     const cartCountElement = document.querySelector('[data-cart-count]');
     if (cartCountElement) {
-      cartCountElement.textContent = cartData.item_count;
+      cartCountElement.textContent = itemCount;
     }
   }
 
