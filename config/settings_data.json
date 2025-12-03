@@ -1,0 +1,64 @@
+{
+  "current": {
+    "colors_solid_button_labels": "#FFFFFF",
+    "colors_accent_1": "#121212",
+    "colors_accent_2": "#334FB4",
+    "colors_text": "#121212",
+    "colors_outline_button_labels": "#121212",
+    "colors_background_1": "#FFFFFF",
+    "colors_background_2": "#F3F3F3",
+    "type_header_font": "assistant_n4",
+    "type_body_font": "assistant_n4",
+    "page_width": 1200,
+    "spacing_sections": 0,
+    "card_style": "standard",
+    "card_image_padding": "0",
+    "card_text_alignment": "left",
+    "card_color_scheme": "background-1",
+    "currency_code_enabled": true,
+    "cart_type": "notification",
+    "show_vendor": false,
+    "show_cart_note": false,
+    "predictive_search_enabled": true,
+    "predictive_search_show_vendor": false,
+    "predictive_search_show_price": false,
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo_position": "middle-left",
+          "menu": "main-menu",
+          "menu_type_desktop": "dropdown",
+          "sticky_header_type": "on-scroll-up",
+          "show_line_separator": true,
+          "enable_country_selector": false,
+          "enable_language_selector": false
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Quick links",
+              "menu": "footer"
+            }
+          }
+        },
+        "block_order": [
+          "footer-0"
+        ],
+        "settings": {
+          "color_scheme": "accent-1",
+          "newsletter_enable": true,
+          "newsletter_heading": "Subscribe to our emails",
+          "show_social": true,
+          "enable_country_selector": false,
+          "enable_language_selector": false,
+          "payment_enable": true
+        }
+      }
+    }
+  }
+}
