@@ -1,0 +1,302 @@
+{% comment %}
+  Mariana Featured Collection - Premium Art Gallery Grid
+  Clean grid layout for artwork with generous spacing
+  Mobile-first design that scales beautifully
+{% endcomment %}
+
+<style>
+  .mariana-collection {
+    padding: 8rem 3rem;
+    background-color: rgb(var(--color-background));
+  }
+
+  @media screen and (max-width: 749px) {
+    .mariana-collection {
+      padding: 5rem 2rem;
+    }
+  }
+
+  .mariana-collection__inner {
+    max-width: var(--page-width);
+    margin: 0 auto;
+  }
+
+  .mariana-collection__header {
+    text-align: center;
+    margin-bottom: 6rem;
+    max-width: 72rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media screen and (max-width: 749px) {
+    .mariana-collection__header {
+      margin-bottom: 4rem;
+    }
+  }
+
+  .mariana-collection__title {
+    font-size: 4.2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0 0 1.6rem 0;
+    letter-spacing: -0.01em;
+  }
+
+  @media screen and (max-width: 749px) {
+    .mariana-collection__title {
+      font-size: 3.2rem;
+    }
+  }
+
+  .mariana-collection__description {
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: rgba(var(--color-foreground), 0.75);
+    margin: 0;
+  }
+
+  .mariana-collection__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .mariana-collection__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 5rem;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .mariana-collection__grid {
+      grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+      gap: 6rem;
+    }
+  }
+
+  /* Product Card Styling */
+  .mariana-product-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .mariana-product-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .mariana-product-card__image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* Square aspect ratio */
+    margin-bottom: 2rem;
+    overflow: hidden;
+    background-color: rgba(var(--color-foreground), 0.02);
+  }
+
+  .mariana-product-card__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .mariana-product-card:hover .mariana-product-card__image {
+    transform: scale(1.05);
+  }
+
+  .mariana-product-card__info {
+    text-align: center;
+  }
+
+  .mariana-product-card__title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0 0 0.8rem 0;
+    line-height: 1.3;
+  }
+
+  .mariana-product-card__meta {
+    font-size: 1.4rem;
+    color: rgba(var(--color-foreground), 0.65);
+    margin: 0 0 1.2rem 0;
+  }
+
+  .mariana-product-card__price {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .mariana-product-card__badge {
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+    background-color: rgba(var(--color-foreground), 0.9);
+    color: rgb(var(--color-background));
+    padding: 0.6rem 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.06rem;
+    text-transform: uppercase;
+  }
+
+  .mariana-collection__footer {
+    margin-top: 6rem;
+    text-align: center;
+  }
+
+  .mariana-collection__view-all {
+    display: inline-block;
+    padding: 1.6rem 4rem;
+    background-color: transparent;
+    color: rgba(var(--color-foreground), 0.9);
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+    border: 2px solid rgba(var(--color-foreground), 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .mariana-collection__view-all:hover {
+    background-color: rgba(var(--color-foreground), 0.05);
+    border-color: rgba(var(--color-foreground), 0.6);
+    transform: translateY(-2px);
+  }
+</style>
+
+<div class="mariana-collection color-{{ section.settings.color_scheme }}">
+  <div class="mariana-collection__inner">
+    {%- if section.settings.title != blank or section.settings.description != blank -%}
+      <div class="mariana-collection__header">
+        {%- if section.settings.title != blank -%}
+          <h2 class="mariana-collection__title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.description != blank -%}
+          <div class="mariana-collection__description">{{ section.settings.description }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.collection != blank -%}
+      {%- assign collection = collections[section.settings.collection] -%}
+      {%- assign products_to_show = section.settings.products_to_show | default: 4 -%}
+
+      <div class="mariana-collection__grid">
+        {%- for product in collection.products limit: products_to_show -%}
+          <a href="{{ product.url }}" class="mariana-product-card">
+            <div class="mariana-product-card__image-wrapper">
+              {%- if product.featured_image -%}
+                {{
+                  product.featured_image
+                  | image_url: width: 800
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'mariana-product-card__image',
+                    widths: '375, 550, 750, 800',
+                    sizes: '(min-width: 990px) calc((100vw - 18rem) / {{ section.settings.columns_desktop }}), (min-width: 750px) calc((100vw - 13rem) / 2), calc(100vw - 4rem)'
+                }}
+              {%- endif -%}
+
+              {%- if product.available == false -%}
+                <span class="mariana-product-card__badge">Sold</span>
+              {%- elsif product.tags contains 'new' -%}
+                <span class="mariana-product-card__badge">New</span>
+              {%- endif -%}
+            </div>
+
+            <div class="mariana-product-card__info">
+              <h3 class="mariana-product-card__title">{{ product.title }}</h3>
+              
+              {%- if product.metafields.custom.medium != blank -%}
+                <p class="mariana-product-card__meta">{{ product.metafields.custom.medium }}</p>
+              {%- endif -%}
+
+              <p class="mariana-product-card__price">
+                {{ product.price | money }}
+              </p>
+            </div>
+          </a>
+        {%- endfor -%}
+      </div>
+
+      {%- if section.settings.show_view_all and collection.products_count > products_to_show -%}
+        <div class="mariana-collection__footer">
+          <a href="{{ collection.url }}" class="mariana-collection__view-all">
+            View All {{ collection.title }}
+          </a>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Mariana Featured Collection",
+  "class": "mariana-featured-collection-section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured Collection"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Handcrafted artworks from the latest collection</p>"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "label": "Products to show",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "Columns (desktop)",
+      "default": 3,
+      "info": "Number of products per row on desktop"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'View All' button",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mariana Featured Collection"
+    }
+  ]
+}
+{% endschema %}

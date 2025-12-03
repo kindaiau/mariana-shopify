@@ -1,0 +1,194 @@
+/* 
+ * Mariana Art Gallery - Premium Header Styling
+ * Minimal, elegant header design with generous spacing
+ * Art-first approach with clean typography
+ */
+
+/* ============================================
+   HEADER IMPROVEMENTS
+   ============================================ */
+
+/* Cleaner header with more breathing room */
+.header-wrapper {
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.08);
+}
+
+.header {
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem;
+}
+
+@media screen and (min-width: 990px) {
+  .header {
+    padding-top: 3.2rem;
+    padding-bottom: 3.2rem;
+  }
+}
+
+/* Logo refinements for art gallery aesthetic */
+.header__heading-logo-wrapper {
+  transition: opacity 0.2s ease;
+}
+
+.header__heading-logo-wrapper:hover {
+  opacity: 0.85;
+}
+
+.header__heading-logo {
+  max-height: 4.5rem;
+}
+
+@media screen and (min-width: 990px) {
+  .header__heading-logo {
+    max-height: 5.5rem;
+  }
+}
+
+/* Centered logo option - premium gallery style */
+.header--middle-center {
+  justify-content: center;
+  gap: 4rem;
+}
+
+.header--middle-center .header__heading {
+  flex: 0 0 auto;
+  order: 0;
+}
+
+/* Better spacing for menu items */
+.header__menu-item {
+  padding: 0 1.6rem;
+}
+
+.list-menu__item--link {
+  font-size: 1.3rem;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.list-menu__item--link:hover {
+  opacity: 0.65;
+}
+
+/* Icon refinements */
+.header__icon {
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-left: 1.6rem;
+}
+
+.header__icon:hover {
+  opacity: 0.65;
+}
+
+/* Cart count bubble - softer design */
+.cart-count-bubble {
+  background-color: rgba(var(--color-foreground), 0.9);
+  color: rgb(var(--color-background));
+  border-radius: 50%;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Mobile header improvements */
+@media screen and (max-width: 989px) {
+  .header {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .header--mobile-center .header__heading {
+    justify-content: center;
+    flex: 1;
+  }
+
+  .header__heading-logo {
+    max-height: 3.8rem;
+  }
+}
+
+/* Remove default border if you prefer cleaner look */
+.header-wrapper--border-bottom {
+  box-shadow: none;
+}
+
+/* ============================================
+   STICKY HEADER REFINEMENTS  
+   ============================================ */
+
+.shopify-section-header-sticky {
+  background-color: rgb(var(--color-background));
+}
+
+.scrolled-past-header .header {
+  padding-top: 1.6rem;
+  padding-bottom: 1.6rem;
+}
+
+.scrolled-past-header .header__heading-logo {
+  max-height: 4rem;
+}
+
+/* Smooth transitions for sticky header */
+.header,
+.header__heading-logo,
+.header__heading-logo-wrapper {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   MOBILE DRAWER MENU IMPROVEMENTS
+   ============================================ */
+
+header-drawer {
+  margin-left: 0;
+}
+
+.menu-drawer__navigation {
+  padding: 3rem 2rem;
+}
+
+.menu-drawer__menu-item {
+  font-size: 1.6rem;
+  letter-spacing: 0.06rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.08);
+}
+
+/* ============================================
+   SEARCH MODAL IMPROVEMENTS
+   ============================================ */
+
+.search-modal__form {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.search-modal input[type="search"] {
+  font-size: 1.8rem;
+  padding: 1.6rem 2rem;
+  border: 1px solid rgba(var(--color-foreground), 0.15);
+  border-radius: 0;
+}
+
+.search-modal input[type="search"]:focus {
+  border-color: rgba(var(--color-foreground), 0.3);
+  outline: none;
+}
+
+/* ============================================
+   ANNOUNCEMENT BAR + HEADER SPACING
+   ============================================ */
+
+.section-header {
+  margin-bottom: 0;
+}
+
+/* Clean transition between announcement and header */
+.mariana-announcement + .section-header .header-wrapper {
+  border-top: none;
+}

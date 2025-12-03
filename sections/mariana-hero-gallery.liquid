@@ -1,0 +1,334 @@
+{% comment %}
+  Mariana Hero Gallery - Premium Art Gallery Hero
+  Full-width imagery with minimal text overlay
+  Perfect for showcasing the Christmas Resin Collection
+{% endcomment %}
+
+<style>
+  .mariana-hero {
+    position: relative;
+    width: 100%;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: rgb(var(--color-background));
+  }
+
+  @media screen and (min-width: 750px) {
+    .mariana-hero {
+      min-height: 70vh;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .mariana-hero {
+      min-height: 75vh;
+    }
+  }
+
+  .mariana-hero__image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .mariana-hero__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .mariana-hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, {{ section.settings.overlay_opacity | divided_by: 100.0 }}) 100%
+    );
+  }
+
+  .mariana-hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: 90rem;
+    margin: 0 auto;
+    padding: 4rem 3rem;
+    text-align: {{ section.settings.text_alignment }};
+    color: {{ section.settings.text_color }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .mariana-hero__content {
+      padding: 3rem 2rem;
+    }
+  }
+
+  .mariana-hero__heading {
+    font-size: 4.8rem;
+    font-weight: 600;
+    line-height: 1.1;
+    margin: 0 0 1.6rem 0;
+    letter-spacing: -0.02em;
+  }
+
+  @media screen and (min-width: 750px) {
+    .mariana-hero__heading {
+      font-size: 6.4rem;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .mariana-hero__heading {
+      font-size: 7.2rem;
+    }
+  }
+
+  .mariana-hero__subheading {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0 0 3.2rem 0;
+    max-width: 72rem;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+  }
+
+  @media screen and (min-width: 750px) {
+    .mariana-hero__subheading {
+      font-size: 1.8rem;
+    }
+  }
+
+  .mariana-hero__button {
+    display: inline-block;
+    padding: 1.6rem 4rem;
+    background-color: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color }};
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+    border: 2px solid {{ section.settings.button_border_color }};
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .mariana-hero__button:hover {
+    background-color: {{ section.settings.button_hover_bg }};
+    color: {{ section.settings.button_hover_text }};
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  @media screen and (max-width: 749px) {
+    .mariana-hero__button {
+      padding: 1.4rem 3.2rem;
+      font-size: 1.3rem;
+    }
+  }
+
+  /* Content positioning options */
+  .mariana-hero--bottom .mariana-hero__content {
+    align-self: flex-end;
+  }
+
+  .mariana-hero--top .mariana-hero__content {
+    align-self: flex-start;
+  }
+
+  .mariana-hero--center .mariana-hero__content {
+    align-self: center;
+  }
+</style>
+
+<div class="mariana-hero mariana-hero--{{ section.settings.content_position }}">
+  {%- if section.settings.hero_image != blank -%}
+    <div class="mariana-hero__image-wrapper">
+      {%- assign image_height = section.settings.hero_image.width | divided_by: section.settings.hero_image.aspect_ratio -%}
+      {{
+        section.settings.hero_image
+        | image_url: width: 3000
+        | image_tag:
+          loading: 'eager',
+          class: 'mariana-hero__image',
+          widths: '375, 750, 1100, 1500, 1780, 2000, 3000',
+          sizes: '100vw',
+          preload: true
+      }}
+      <div class="mariana-hero__overlay"></div>
+    </div>
+  {%- endif -%}
+
+  <div class="mariana-hero__content">
+    {%- if section.settings.heading != blank -%}
+      <h1 class="mariana-hero__heading">{{ section.settings.heading }}</h1>
+    {%- endif -%}
+
+    {%- if section.settings.subheading != blank -%}
+      <p class="mariana-hero__subheading">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.button_text != blank -%}
+      <a href="{{ section.settings.button_link }}" class="mariana-hero__button">
+        {{ section.settings.button_text }}
+      </a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Mariana Hero Gallery",
+  "class": "mariana-hero-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image",
+      "info": "Recommended: 2000px width, high quality artwork photo"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 70,
+      "step": 5,
+      "unit": "%",
+      "label": "Image overlay opacity",
+      "default": 20,
+      "info": "Darkens image for better text readability"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Christmas Resin Collection"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "One-of-a-kind resin artworks, handcrafted in Adelaide"
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Content position",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "View Collection"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Button border",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg",
+      "label": "Button hover background",
+      "default": "rgba(255, 255, 255, 0.9)"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text",
+      "label": "Button hover text",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mariana Hero Gallery"
+    }
+  ]
+}
+{% endschema %}
