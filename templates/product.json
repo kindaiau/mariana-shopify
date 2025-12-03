@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {}
+    },
+    "related": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related"
+  ]
+}

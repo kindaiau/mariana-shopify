@@ -1,0 +1,117 @@
+<div class="main-cart">
+  <div class="container">
+    <h1>{{ 'cart.general.title' | t }}</h1>
+
+    {% if cart.item_count > 0 %}
+      <form action="{{ routes.cart_url }}" method="post">
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in cart.items %}
+              <tr>
+                <td class="cart-item-product">
+                  {% if item.image %}
+                    <img src="{{ item.image | image_url: width: 100 }}" alt="{{ item.title }}">
+                  {% endif %}
+                  <div>
+                    <a href="{{ item.url }}">{{ item.product.title }}</a>
+                    {% if item.variant.title != 'Default Title' %}
+                      <p>{{ item.variant.title }}</p>
+                    {% endif %}
+                  </div>
+                </td>
+                <td>{{ item.price | money }}</td>
+                <td>
+                  <input type="number" 
+                         name="updates[]" 
+                         value="{{ item.quantity }}" 
+                         min="0"
+                         data-line="{{ forloop.index }}">
+                </td>
+                <td>{{ item.line_price | money }}</td>
+                <td>
+                  <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0">
+                    {{ 'cart.general.remove' | t }}
+                  </a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <div class="cart-footer">
+          <div class="cart-subtotal">
+            <strong>{{ 'cart.general.subtotal' | t }}:</strong>
+            <span>{{ cart.total_price | money }}</span>
+          </div>
+          
+          <button type="submit" name="update" class="button">Update Cart</button>
+          <button type="submit" name="checkout" class="button">{{ 'cart.general.checkout' | t }}</button>
+        </div>
+      </form>
+    {% else %}
+      <p>{{ 'cart.general.empty' | t }}</p>
+      <a href="{{ routes.all_products_collection_url }}" class="button">
+        {{ 'cart.general.continue_shopping' | t }}
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .main-cart {
+    padding: 3rem 0;
+  }
+  
+  .cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+  }
+  
+  .cart-table th,
+  .cart-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+  }
+  
+  .cart-item-product {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .cart-item-product img {
+    width: 80px;
+  }
+  
+  .cart-footer {
+    text-align: right;
+    margin-top: 2rem;
+  }
+  
+  .cart-subtotal {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cart-footer .button {
+    margin-left: 1rem;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Main Cart",
+  "settings": []
+}
+{% endschema %}

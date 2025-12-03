@@ -1,0 +1,98 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      {% if section.settings.show_social_links %}
+        <div class="footer-social">
+          <h3>{{ section.settings.social_heading }}</h3>
+          <ul class="social-links">
+            {% if section.settings.social_instagram_link != blank %}
+              <li>
+                <a href="{{ section.settings.social_instagram_link }}" target="_blank" rel="noopener" aria-label="Instagram">
+                  Instagram
+                </a>
+              </li>
+            {% endif %}
+            {% if section.settings.social_facebook_link != blank %}
+              <li>
+                <a href="{{ section.settings.social_facebook_link }}" target="_blank" rel="noopener" aria-label="Facebook">
+                  Facebook
+                </a>
+              </li>
+            {% endif %}
+            {% if section.settings.social_twitter_link != blank %}
+              <li>
+                <a href="{{ section.settings.social_twitter_link }}" target="_blank" rel="noopener" aria-label="Twitter">
+                  Twitter
+                </a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      {% endif %}
+
+      {% if section.settings.footer_text != blank %}
+        <div class="footer-text">
+          {{ section.settings.footer_text }}
+        </div>
+      {% endif %}
+
+      <div class="footer-legal">
+        <p>&copy; {{ "now" | date: "%Y" }} {{ shop.name }}. All rights reserved.</p>
+        {% if section.settings.show_payment_icons %}
+          <div class="payment-icons">
+            {% for type in shop.enabled_payment_types %}
+              {{ type | payment_type_svg_tag }}
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "footer_text",
+      "label": "Footer text",
+      "default": "<p>Mariana Mezic - Original Artwork</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_links",
+      "label": "Show social links",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "social_heading",
+      "label": "Social heading",
+      "default": "Follow Us"
+    },
+    {
+      "type": "url",
+      "id": "social_instagram_link",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "social_facebook_link",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "url",
+      "id": "social_twitter_link",
+      "label": "Twitter URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

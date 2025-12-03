@@ -1,0 +1,137 @@
+<div class="main-product">
+  <div class="container">
+    <div class="product-layout">
+      <div class="product-gallery">
+        {% if product.featured_image %}
+          <img src="{{ product.featured_image | image_url: width: 800 }}" 
+               alt="{{ product.title }}"
+               data-main-image>
+        {% endif %}
+        
+        {% if product.images.size > 1 %}
+          <div class="product-thumbnails">
+            {% for image in product.images %}
+              <a href="#" data-thumbnail data-full-image="{{ image | image_url: width: 800 }}">
+                <img src="{{ image | image_url: width: 100 }}" alt="{{ product.title }}">
+              </a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="product-info">
+        <h1 class="product-title">{{ product.title }}</h1>
+        <div class="product-price">{{ product.price | money }}</div>
+        
+        {% if product.description != blank %}
+          <div class="product-description">
+            {{ product.description }}
+          </div>
+        {% endif %}
+
+        <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          
+          {% unless product.has_only_default_variant %}
+            <div class="product-options">
+              {% for option in product.options_with_values %}
+                <div class="option">
+                  <label>{{ option.name }}</label>
+                  <select name="options[{{ option.name }}]">
+                    {% for value in option.values %}
+                      <option value="{{ value }}">{{ value }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              {% endfor %}
+            </div>
+          {% endunless %}
+
+          <button type="submit" 
+                  class="button"
+                  data-add-to-cart
+                  {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}>
+            {% if product.selected_or_first_available_variant.available %}
+              Add to Cart
+            {% else %}
+              Sold Out
+            {% endif %}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .product-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin: 3rem 0;
+  }
+  
+  .product-gallery img {
+    width: 100%;
+  }
+  
+  .product-thumbnails {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .product-thumbnails a {
+    width: 80px;
+  }
+  
+  .product-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .product-price {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    margin-bottom: 2rem;
+  }
+  
+  .product-description {
+    margin-bottom: 2rem;
+    line-height: 1.8;
+  }
+  
+  .product-options {
+    margin-bottom: 2rem;
+  }
+  
+  .option {
+    margin-bottom: 1rem;
+  }
+  
+  .option label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  .option select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  @media (max-width: 768px) {
+    .product-layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Main Product",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,81 @@
+<div class="hero-banner">
+  <div class="container">
+    <div class="hero-content">
+      {% if section.settings.heading != blank %}
+        <h1 class="hero-heading">{{ section.settings.heading }}</h1>
+      {% endif %}
+      {% if section.settings.subheading != blank %}
+        <p class="hero-subheading">{{ section.settings.subheading }}</p>
+      {% endif %}
+      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+        <a href="{{ section.settings.button_link }}" class="button">
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .hero-banner {
+    padding: 80px 0;
+    text-align: center;
+    background: linear-gradient(to bottom, #f9f9f9, #ffffff);
+  }
+  
+  .hero-heading {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subheading {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    .hero-heading {
+      font-size: 2rem;
+    }
+    .hero-subheading {
+      font-size: 1.2rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Welcome"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Discover beautiful artwork"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,38 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_text": "Skip to content",
+      "refresh_page": "Choosing a selection results in a full page refresh."
+    }
+  },
+  "sections": {
+    "cart": {
+      "cart_error": "There was an error while updating your cart. Please try again.",
+      "cart_quantity_error_html": "You can only add [quantity] of this item to your cart."
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity",
+      "price": "Price"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Cart",
+      "remove": "Remove",
+      "subtotal": "Subtotal",
+      "checkout": "Checkout",
+      "empty": "Your cart is currently empty.",
+      "continue_shopping": "Continue shopping"
+    }
+  },
+  "collections": {
+    "general": {
+      "no_matches": "Sorry, there are no products in this collection"
+    }
+  }
+}

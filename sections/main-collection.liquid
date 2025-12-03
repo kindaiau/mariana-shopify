@@ -1,0 +1,117 @@
+<div class="main-collection">
+  <div class="container">
+    <h1 class="collection-title">{{ collection.title }}</h1>
+    
+    {% if collection.description != blank %}
+      <div class="collection-description">
+        {{ collection.description }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.enable_filtering or section.settings.enable_sorting %}
+      <div class="collection-controls">
+        {% if section.settings.enable_sorting %}
+          <div class="collection-sorting">
+            <label for="sort-by">Sort by:</label>
+            <select id="sort-by" name="sort_by">
+              <option value="manual">Featured</option>
+              <option value="best-selling">Best selling</option>
+              <option value="title-ascending">A-Z</option>
+              <option value="title-descending">Z-A</option>
+              <option value="price-ascending">Price: Low to High</option>
+              <option value="price-descending">Price: High to Low</option>
+              <option value="created-ascending">Date: Old to New</option>
+              <option value="created-descending">Date: New to Old</option>
+            </select>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="product-grid">
+      {% for product in collection.products %}
+        <div class="product-card">
+          <a href="{{ product.url }}">
+            {% if product.featured_image %}
+              {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: product.title }}
+            {% else %}
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+            <h3 class="product-title">{{ product.title }}</h3>
+            <p class="product-price">{{ product.price | money }}</p>
+          </a>
+        </div>
+      {% else %}
+        <p>No products in this collection.</p>
+      {% endfor %}
+    </div>
+
+    {% if paginate.pages > 1 %}
+      <div class="pagination">
+        {{ paginate | default_pagination }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .collection-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .collection-description {
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .collection-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+  }
+  
+  .collection-sorting select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-left: 10px;
+  }
+  
+  .pagination {
+    text-align: center;
+    margin-top: 3rem;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Main Collection",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 12,
+      "max": 48,
+      "step": 12,
+      "label": "Products per page",
+      "default": 24
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "label": "Enable filtering",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "label": "Enable sorting",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "heading": "Mariana Mezic Artwork",
+        "subheading": "Original paintings and prints"
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Featured Artwork",
+        "products_to_show": 6,
+        "show_view_all": true,
+        "button_label": "View all artwork"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "featured_collection"
+  ]
+}

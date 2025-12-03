@@ -1,0 +1,66 @@
+<div class="related-products">
+  <div class="container">
+    {% if section.settings.heading != blank %}
+      <h2 class="section-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    {%- liquid
+      assign products_count = section.settings.products_to_show
+      assign current_product_id = product.id
+    -%}
+
+    <div class="product-grid">
+      {% for product in product.collections.first.products limit: products_count %}
+        {% unless product.id == current_product_id %}
+          <div class="product-card">
+            <a href="{{ product.url }}">
+              {% if product.featured_image %}
+                {{ product.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: product.title }}
+              {% else %}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+              <h3 class="product-title">{{ product.title }}</h3>
+              <p class="product-price">{{ product.price | money }}</p>
+            </a>
+          </div>
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .related-products {
+    margin-top: 4rem;
+    padding-top: 4rem;
+    border-top: 1px solid #eee;
+  }
+  
+  .section-heading {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Related Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You may also like"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "label": "Number of products to show",
+      "default": 4
+    }
+  ]
+}
+{% endschema %}

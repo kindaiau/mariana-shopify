@@ -1,0 +1,64 @@
+<div class="main-404">
+  <div class="container">
+    <div class="error-content">
+      <h1>404</h1>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.text }}</p>
+      <a href="{{ routes.root_url }}" class="button">
+        {{ section.settings.button_label }}
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .main-404 {
+    padding: 4rem 0;
+    text-align: center;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .error-content h1 {
+    font-size: 6rem;
+    margin-bottom: 1rem;
+    color: var(--color-accent);
+  }
+  
+  .error-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .error-content p {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "404 Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Page not found"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "The page you were looking for does not exist."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Continue shopping"
+    }
+  ]
+}
+{% endschema %}

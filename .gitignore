@@ -1,0 +1,38 @@
+# Shopify Theme Development
+
+# Config files with sensitive data
+config/settings_data.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node modules (if using build tools)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build artifacts
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.log
+.env
+.env.local
+
+# Theme Kit config (if used)
+config.yml
+
+# Shopify CLI
+.shopify/
+
+# ZIP files
+*.zip

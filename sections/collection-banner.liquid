@@ -1,0 +1,28 @@
+<div class="collection-banner">
+  <div class="container">
+    {% if collection.image %}
+      <div class="banner-image">
+        {{ collection.image | image_url: width: 1600 | image_tag: alt: collection.title }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .collection-banner {
+    margin-bottom: 2rem;
+  }
+  
+  .banner-image img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Collection Banner",
+  "settings": []
+}
+{% endschema %}

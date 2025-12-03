@@ -1,0 +1,60 @@
+<header class="site-header">
+  <div class="container">
+    <div class="header-wrapper">
+      <div class="site-logo">
+        <a href="{{ routes.root_url }}">
+          {% if section.settings.logo != blank %}
+            {{ section.settings.logo | image_url: width: 200 | image_tag: loading: 'lazy', alt: shop.name }}
+          {% else %}
+            {{ shop.name }}
+          {% endif %}
+        </a>
+      </div>
+
+      <nav class="main-nav" role="navigation">
+        <ul>
+          {% for link in section.settings.menu.links %}
+            <li>
+              <a href="{{ link.url }}"{% if link.active %} class="active"{% endif %}>
+                {{ link.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="{{ routes.search_url }}" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M19 19L13 13M15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1C11.866 1 15 4.13401 15 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </a>
+        <a href="{{ routes.cart_url }}" aria-label="Cart">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M1 1H4L6.68 13.39C6.77144 13.8504 7.02191 14.264 7.38755 14.5583C7.75318 14.8526 8.2107 15.009 8.68 15H16.4C16.8693 15.009 17.3268 14.8526 17.6925 14.5583C18.0581 14.264 18.3086 13.8504 18.4 13.39L20 5H5M8 18C8 18.5523 7.55228 19 7 19C6.44772 19 6 18.5523 6 18C6 17.4477 6.44772 17 7 17C7.55228 17 8 17.4477 8 18ZM18 18C18 18.5523 17.5523 19 17 19C16.4477 19 16 18.5523 16 18C16 17.4477 16.4477 17 17 17C17.5523 17 18 17.4477 18 18Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span data-cart-count>{{ cart.item_count }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}
