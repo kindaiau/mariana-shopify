@@ -1,0 +1,220 @@
+/*
+ * Discount badges and labels
+ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.8rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1;
+  border-radius: var(--badge-corner-radius);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.badge--sale {
+  background-color: rgb(var(--color-accent-1, 18, 18, 18));
+  color: rgb(var(--color-accent-1-text, 255, 255, 255));
+}
+
+.badge--soldout {
+  background-color: rgba(var(--color-foreground), 0.1);
+  color: rgb(var(--color-foreground));
+}
+
+.badge--new {
+  background-color: rgb(var(--color-accent-2, 51, 79, 180));
+  color: rgb(var(--color-accent-2-text, 255, 255, 255));
+}
+
+/* Discount tags */
+.discount {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(var(--color-accent-1, 18, 18, 18), 0.1);
+  color: rgb(var(--color-accent-1, 18, 18, 18));
+  border-radius: 0.4rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.discount__icon {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.discount__percentage {
+  font-weight: 700;
+}
+
+/* Product card discount badge */
+.card__badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+}
+
+.card__badge .badge {
+  box-shadow: 0 0.2rem 0.4rem rgba(var(--color-foreground), 0.1);
+}
+
+/* Cart discount display */
+.cart-discount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: rgba(var(--color-accent-2, 51, 79, 180), 0.1);
+  border-radius: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.cart-discount__label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  color: rgb(var(--color-accent-2, 51, 79, 180));
+}
+
+.cart-discount__icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.cart-discount__code {
+  font-weight: 600;
+  font-family: monospace;
+  background-color: rgba(var(--color-foreground), 0.05);
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.3rem;
+}
+
+.cart-discount__amount {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: rgb(var(--color-accent-2, 51, 79, 180));
+}
+
+.cart-discount__remove {
+  background: transparent;
+  border: none;
+  color: rgba(var(--color-foreground), 0.5);
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.cart-discount__remove:hover {
+  color: rgb(var(--color-foreground));
+}
+
+/* Price with discount */
+.price--on-sale {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.price__regular {
+  text-decoration: line-through;
+  color: rgba(var(--color-foreground), 0.5);
+  font-size: 0.9em;
+}
+
+.price__sale {
+  color: rgb(var(--color-accent-1, 18, 18, 18));
+  font-weight: 700;
+}
+
+.price__badge-sale {
+  margin-left: 0.5rem;
+}
+
+/* Unit price with discount */
+.unit-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 1.3rem;
+  color: rgba(var(--color-foreground), 0.7);
+  margin-top: 0.5rem;
+}
+
+.unit-price__price {
+  font-weight: 500;
+}
+
+.unit-price__separator {
+  margin: 0 0.3rem;
+}
+
+/* Volume pricing discounts */
+.volume-pricing {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: rgba(var(--color-foreground), 0.02);
+  border-radius: 0.6rem;
+}
+
+.volume-pricing__heading {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.volume-pricing__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.volume-pricing__item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  font-size: 1.3rem;
+}
+
+.volume-pricing__quantity {
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.volume-pricing__price {
+  font-weight: 600;
+  color: rgb(var(--color-accent-2, 51, 79, 180));
+}
+
+/* Free shipping threshold */
+.shipping-threshold {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: rgba(var(--color-accent-2, 51, 79, 180), 0.1);
+  border-radius: 0.6rem;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.shipping-threshold__icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  color: rgb(var(--color-accent-2, 51, 79, 180));
+}
+
+.shipping-threshold__text {
+  flex: 1;
+}
+
+.shipping-threshold__amount {
+  font-weight: 700;
+  color: rgb(var(--color-accent-2, 51, 79, 180));
+}
