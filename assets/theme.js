@@ -36,7 +36,8 @@ class CartManager {
       const data = await response.json();
       
       if (response.ok) {
-        // Fetch current cart to get accurate count
+        // Fetch current cart to get accurate total count
+        // The cart/add endpoint doesn't return full cart state
         const cartResponse = await fetch('/cart.js');
         const cartData = await cartResponse.json();
         this.updateCartCount(cartData.item_count);
