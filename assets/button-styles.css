@@ -1,0 +1,18 @@
+/* Remove ugly bubble / pill shapes */
+button,
+.btn,
+.button,
+.product-form__submit {
+  border-radius: 6px !important;        /* normal modern corners */
+  box-shadow: none !important;          /* no shadows */
+  padding: 12px 18px !important;        /* clean, balanced spacing */
+  background-image: none !important;    /* remove gradients */
+}
+
+/* Fix weird floating buttons */
+button,
+.btn,
+.button {
+  display: inline-block !important;     /* keeps them anchored properly */
+  margin: 8px 0 !important;             /* consistent spacing */
+}
