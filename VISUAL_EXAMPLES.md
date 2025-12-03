@@ -337,32 +337,13 @@ Theme Files Structure
 
 ## Color Scheme Examples
 
-### Scheme 1: Light Theme
+### Color Scheme Examples
 
-```
-Background: White (#FFFFFF)
-Text: Dark Gray (#333333)
-Buttons: Primary Color
-Effect: Clean, professional
-```
-
-### Scheme 2: Dark Theme
-
-```
-Background: Dark Gray (#1A1A1A)
-Text: White (#FFFFFF)
-Buttons: Accent Color
-Effect: Modern, bold
-```
-
-### Scheme 3: Branded Theme
-
-```
-Background: Brand Color
-Text: Contrasting Color
-Buttons: Secondary Brand Color
-Effect: Strong brand identity
-```
+| Scheme | Background | Text | Buttons | Effect |
+|--------|-----------|------|---------|--------|
+| Light Theme | White (#FFFFFF) | Dark Gray (#333333) | Primary Color | Clean, professional |
+| Dark Theme | Dark Gray (#1A1A1A) | White (#FFFFFF) | Accent Color | Modern, bold |
+| Branded Theme | Brand Color | Contrasting Color | Secondary Brand | Strong identity |
 
 ---
 
@@ -370,28 +351,22 @@ Effect: Strong brand identity
 
 ### Logo Images
 
-```
-Format:      PNG or SVG (preferred)
-Dimensions:  200-400px wide
-             Auto height (maintain aspect ratio)
-File Size:   < 100KB
-Background:  Transparent
-Resolution:  @2x for retina displays
-```
+| Property | Recommendation |
+|----------|----------------|
+| Format | PNG or SVG (preferred) |
+| Dimensions | 200-400px wide, auto height |
+| File Size | < 100KB |
+| Background | Transparent |
+| Resolution | @2x for retina displays |
 
 ### Banner Images
 
-```
-Desktop:
-Format:      JPG or WebP
-Dimensions:  1920 x 800px (or 1920 x 600px for small)
-File Size:   < 500KB (optimized)
-Resolution:  72-96 DPI
-
-Mobile:
-Dimensions:  750 x 1000px (portrait)
-File Size:   < 300KB (optimized)
-```
+| Property | Desktop | Mobile |
+|----------|---------|--------|
+| Format | JPG or WebP | JPG or WebP |
+| Dimensions | 1920 x 800px | 750 x 1000px |
+| File Size | < 500KB | < 300KB |
+| Resolution | 72-96 DPI | 72-96 DPI |
 
 ---
 
