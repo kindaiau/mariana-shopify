@@ -155,7 +155,6 @@
 <div class="mariana-hero mariana-hero--{{ section.settings.content_position }}">
   {%- if section.settings.hero_image != blank -%}
     <div class="mariana-hero__image-wrapper">
-      {%- assign image_height = section.settings.hero_image.width | divided_by: section.settings.hero_image.aspect_ratio -%}
       {{
         section.settings.hero_image
         | image_url: width: 3000
