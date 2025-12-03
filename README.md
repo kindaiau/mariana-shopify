@@ -8,6 +8,7 @@ A Shopify theme for the Mariana store.
 
 - **[Header Logo and Banner Guide](HEADER_LOGO_AND_BANNER_GUIDE.md)** - Complete guide for customizing the header logo and banner sections with detailed code examples and Shopify admin instructions
 - **[Quick Code Reference](QUICK_CODE_REFERENCE.md)** - Fast reference with essential code snippets for header logo and banner customization
+- **[Visual Examples](VISUAL_EXAMPLES.md)** - Visual diagrams, layout examples, and troubleshooting guide
 
 ## Quick Links
 
