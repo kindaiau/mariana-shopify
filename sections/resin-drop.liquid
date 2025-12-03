@@ -1,0 +1,57 @@
+{% assign s = section.settings %}
+
+<section class="resin-drop">
+  <div class="page-width">
+    {% if s.title != blank %}
+      <h2 class="resin-drop__title">{{ s.title }}</h2>
+    {% endif %}
+
+    {% if s.subtitle != blank %}
+      <p class="resin-drop__text">{{ s.subtitle }}</p>
+    {% endif %}
+
+    {% assign resin_url = s.link | default: 'https://mez-resins.lovable.app/' %}
+
+    <iframe
+      src="{{ resin_url }}"
+      style="width:100%;height:600px;border:0;border-radius:24px;box-shadow:0 18px 46px rgba(44,76,58,0.08);"
+      loading="lazy"
+    ></iframe>
+
+    <noscript>
+      <p><a href="{{ resin_url }}" target="_blank" rel="noopener">open resin edition page</a></p>
+    </noscript>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Resin Drop Embed",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "mez resin editions"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle text",
+      "default": "limited pieces poured with love — next drop opens soon"
+    },
+    {
+      "type": "text",
+      "id": "link",
+      "label": "Lovable URL (https://...)",
+      "default": "https://mez-resins.lovable.app/"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Resin Drop Embed",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
