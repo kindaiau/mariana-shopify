@@ -390,15 +390,10 @@
         "id": "color_schemes",
         "definition": [
           {
-            "type": "color",
+            "type": "color_background",
             "id": "background",
             "label": "Background",
             "default": "#FFFFFF"
-          },
-          {
-            "type": "color_background_gradient",
-            "id": "background_gradient",
-            "label": "Background gradient"
           },
           {
             "type": "color",
@@ -408,40 +403,58 @@
           },
           {
             "type": "color",
-            "id": "button",
-            "label": "Button background",
+            "id": "accent",
+            "label": "Accent",
+            "default": "#334FB4"
+          },
+          {
+            "type": "color",
+            "id": "primary_button",
+            "label": "Primary button",
             "default": "#121212"
           },
           {
             "type": "color",
-            "id": "button_label",
-            "label": "Button text",
+            "id": "on_primary_button",
+            "label": "Primary button text",
             "default": "#FFFFFF"
           },
           {
             "type": "color",
-            "id": "secondary_button_label",
+            "id": "secondary_button",
+            "label": "Secondary button",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "color",
+            "id": "on_secondary_button",
             "label": "Secondary button text",
             "default": "#121212"
           },
           {
             "type": "color",
-            "id": "shadow",
-            "label": "Shadow",
+            "id": "primary_button_border",
+            "label": "Primary button border",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "secondary_button_border",
+            "label": "Secondary button border",
             "default": "#121212"
           }
         ],
         "role": {
           "background": "background",
           "text": "text",
-          "links": "secondary_button_label",
-          "buttons": "button",
-          "button_labels": "button_label",
-          "secondary_buttons": "background",
-          "secondary_button_labels": "secondary_button_label",
-          "icons": "text",
-          "borders": "text",
-          "shadows": "shadow"
+          "links": "accent",
+          "primary_button": "primary_button",
+          "on_primary_button": "on_primary_button",
+          "secondary_button": "secondary_button",
+          "on_secondary_button": "on_secondary_button",
+          "primary_button_border": "primary_button_border",
+          "secondary_button_border": "secondary_button_border",
+          "icons": "text"
         }
       }
     ]
@@ -1219,7 +1232,7 @@
         "step": 2,
         "unit": "px",
         "label": "Shadow blur",
-        "default": 5
+        "default": 8
       }
     ]
   },
@@ -1284,7 +1297,7 @@
         "step": 2,
         "unit": "px",
         "label": "Shadow blur",
-        "default": 5
+        "default": 8
       }
     ]
   },
