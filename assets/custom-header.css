@@ -1,0 +1,57 @@
+/* Custom header enhancements */
+.section-header .header-wrapper {
+  background: transparent;
+  box-shadow: none;
+  border-color: rgba(var(--color-foreground), 0.06);
+  transition: background-color var(--duration-short, 200ms) ease, box-shadow var(--duration-short, 200ms) ease,
+    border-color var(--duration-short, 200ms) ease;
+}
+
+.section-header .header-wrapper.header-wrapper--border-bottom {
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.08);
+}
+
+.section-header .header {
+  align-items: center;
+}
+
+.header__heading-logo,
+.header__heading-logo.motion-reduce {
+  background: transparent;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.15));
+}
+
+.shopify-section-header-sticky .header-wrapper,
+.section-header.scrolled-past-header .header-wrapper {
+  background: rgba(var(--color-background), 0.1);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  border-color: rgba(var(--color-foreground), 0.1);
+}
+
+.shopify-section-header-sticky .header,
+.section-header.scrolled-past-header .header {
+  padding-top: max(8px, var(--header-padding-inline, 8px));
+  padding-bottom: max(8px, var(--header-padding-inline, 8px));
+}
+
+.header__icons .header__icon,
+.header__inline-menu .list-menu__item--link,
+.header__menu-item {
+  color: rgb(var(--color-foreground));
+}
+
+.header__icon .svg-wrapper svg,
+.header__heading-logo svg,
+.header__heading-logo img {
+  width: auto;
+  height: auto;
+  max-height: 48px;
+}
+
+@media screen and (max-width: 749px) {
+  .header__heading-logo svg,
+  .header__heading-logo img {
+    max-height: 40px;
+  }
+}
