@@ -108,7 +108,7 @@
             <div class="article-template__comments">
               {%- if comment.status == 'pending' and comment.content -%}
                 <article id="{{ comment.id }}" class="article-template__comments-comment">
-                  {{ comment.content }}
+                  {{ comment.content | escape }}
                   <footer class="right">
                     <span class="circle-divider caption-with-letter-spacing">{{ comment.author }}</span>
                   </footer>
@@ -117,7 +117,7 @@
 
               {%- for comment in article.comments -%}
                 <article id="{{ comment.id }}" class="article-template__comments-comment">
-                  {{ comment.content }}
+                  {{ comment.content | escape }}
                   <footer class="right">
                     <span class="circle-divider caption-with-letter-spacing">{{ comment.author }}</span
                     ><span class="caption-with-letter-spacing">
