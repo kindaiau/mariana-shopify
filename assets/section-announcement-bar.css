@@ -1,0 +1,192 @@
+.announcement-bar {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.08);
+}
+
+.announcement-bar__inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.2rem;
+  align-items: center;
+  padding: 0.6rem 2.4rem;
+}
+
+.announcement-bar__slider {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+
+.announcement-bar__slide {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  text-decoration: none;
+  color: rgb(var(--color-foreground));
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.announcement-bar__message {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.4rem 1.2rem;
+  border-radius: 999px;
+  background: rgba(var(--color-foreground), 0.06);
+  backdrop-filter: blur(8px);
+  transition: transform var(--duration-short, 200ms) ease, background-color var(--duration-short, 200ms) ease,
+    box-shadow var(--duration-short, 200ms) ease;
+}
+
+.announcement-bar__message:hover {
+  transform: translateY(-1px);
+  background: rgba(var(--color-foreground), 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.announcement-bar__pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  background: rgba(var(--color-foreground), 0.12);
+  color: rgb(var(--color-foreground));
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.announcement-bar__text {
+  white-space: nowrap;
+}
+
+.announcement-bar__cta {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: rgba(var(--color-foreground), 0.7);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.announcement-bar__cta svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.announcement-bar__aside {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.announcement-bar__localization select,
+.announcement-bar__localization button {
+  min-height: 36px;
+}
+
+.announcement-bar__social {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.announcement-bar__social .list-social__item svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.announcement-bar--border .announcement-bar__inner {
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.1);
+}
+
+.announcement-bar .slider-buttons {
+  justify-content: flex-start;
+  gap: 0.4rem;
+}
+
+.announcement-bar .slider-button {
+  width: 38px;
+  height: 38px;
+  border-radius: 10rem;
+  background: rgba(var(--color-foreground), 0.08);
+  transition: background var(--duration-short, 200ms) ease;
+}
+
+.announcement-bar .slider-button:not([disabled]):hover {
+  background: rgba(var(--color-foreground), 0.14);
+}
+
+.announcement-bar .slider-button .icon {
+  color: rgb(var(--color-foreground));
+}
+
+.announcement-bar-slider--fade-in-next,
+.announcement-bar-slider--fade-in-previous,
+.announcement-bar-slider--fade-out-next,
+.announcement-bar-slider--fade-out-previous {
+  animation-duration: 220ms;
+  animation-timing-function: ease;
+}
+
+.announcement-bar-slider--fade-in-next,
+.announcement-bar-slider--fade-in-previous {
+  animation-name: announcementFadeIn;
+}
+
+.announcement-bar-slider--fade-out-next,
+.announcement-bar-slider--fade-out-previous {
+  animation-name: announcementFadeOut;
+}
+
+@keyframes announcementFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes announcementFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .announcement-bar__inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding-inline: 1.6rem;
+  }
+
+  .announcement-bar__slide {
+    white-space: normal;
+  }
+
+  .announcement-bar__message {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .announcement-bar__aside {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
