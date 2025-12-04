@@ -41,17 +41,30 @@
   color: rgb(var(--color-foreground));
 }
 
+/* Increase logo size on desktop and mobile */
 .header__icon .svg-wrapper svg,
 .header__heading-logo svg,
 .header__heading-logo img {
   width: auto;
   height: auto;
-  max-height: 48px;
+  max-height: 80px;
 }
 
 @media screen and (max-width: 749px) {
   .header__heading-logo svg,
   .header__heading-logo img {
-    max-height: 40px;
+    max-height: 60px;
+  }
+}
+
+/* Reduce vertical padding in the header */
+.section-header .header {
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+}
+@media screen and (max-width: 749px) {
+  .section-header .header {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
   }
 }
