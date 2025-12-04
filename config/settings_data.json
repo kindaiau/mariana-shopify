@@ -15,6 +15,73 @@
     "card_image_padding": "0",
     "card_text_alignment": "left",
     "card_color_scheme": "background-1",
+    "color_schemes": [
+      {
+        "name": "Background 1",
+        "id": "background-1",
+        "settings": {
+          "background": "#FFFFFF",
+          "background_gradient": "",
+          "text": "#121212",
+          "button": "#121212",
+          "button_label": "#FFFFFF",
+          "secondary_button_label": "#121212",
+          "shadow": "#121212"
+        }
+      },
+      {
+        "name": "Background 2",
+        "id": "background-2",
+        "settings": {
+          "background": "#F3F3F3",
+          "background_gradient": "",
+          "text": "#121212",
+          "button": "#121212",
+          "button_label": "#FFFFFF",
+          "secondary_button_label": "#121212",
+          "shadow": "#121212"
+        }
+      },
+      {
+        "name": "Accent 1",
+        "id": "accent-1",
+        "settings": {
+          "background": "#121212",
+          "background_gradient": "",
+          "text": "#FFFFFF",
+          "button": "#FFFFFF",
+          "button_label": "#121212",
+          "secondary_button_label": "#FFFFFF",
+          "shadow": "#121212"
+        }
+      },
+      {
+        "name": "Accent 2",
+        "id": "accent-2",
+        "settings": {
+          "background": "#334FB4",
+          "background_gradient": "",
+          "text": "#FFFFFF",
+          "button": "#FFFFFF",
+          "button_label": "#334FB4",
+          "secondary_button_label": "#FFFFFF",
+          "shadow": "#334FB4"
+        }
+      },
+      {
+        "name": "Scheme 1",
+        "id": "scheme-1",
+        "settings": {
+          "background": "#FFFFFF",
+          "background_gradient": "",
+          "text": "#121212",
+          "button": "#121212",
+          "button_label": "#FFFFFF",
+          "secondary_button_label": "#121212",
+          "shadow": "#121212"
+        }
+      }
+    ],
     "currency_code_enabled": true,
     "cart_type": "notification",
     "show_vendor": false,
