@@ -1,0 +1,136 @@
+{% comment %}
+  Mariana Custom Announcement Bar - Premium Art Gallery Design
+  Minimal, elegant announcement bar with generous spacing
+{% endcomment %}
+
+<style>
+  .mariana-announcement {
+    background-color: rgb(var(--color-background));
+    border-bottom: 1px solid rgba(var(--color-foreground), 0.08);
+    padding: 0;
+  }
+
+  .mariana-announcement__inner {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 1.2rem 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mariana-announcement__text {
+    font-size: 1.3rem;
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: rgba(var(--color-foreground), 0.85);
+    text-align: center;
+    margin: 0;
+  }
+
+  .mariana-announcement__link {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .mariana-announcement__link:hover {
+    opacity: 0.65;
+  }
+
+  .mariana-announcement__emoji {
+    margin-left: 0.6rem;
+    font-size: 1.4rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    .mariana-announcement__inner {
+      padding: 1rem 2rem;
+    }
+
+    .mariana-announcement__text {
+      font-size: 1.2rem;
+      letter-spacing: 0.06rem;
+    }
+  }
+
+  /* Hide if no content */
+  .mariana-announcement:empty {
+    display: none;
+  }
+</style>
+
+{%- if section.settings.show_announcement -%}
+  <div class="mariana-announcement color-{{ section.settings.color_scheme }}">
+    <div class="mariana-announcement__inner">
+      {%- if section.settings.announcement_link != blank -%}
+        <a href="{{ section.settings.announcement_link }}" class="mariana-announcement__link">
+          <p class="mariana-announcement__text">
+            {{ section.settings.announcement_text }}
+            {%- if section.settings.show_emoji -%}
+              <span class="mariana-announcement__emoji">{{ section.settings.emoji }}</span>
+            {%- endif -%}
+          </p>
+        </a>
+      {%- else -%}
+        <p class="mariana-announcement__text">
+          {{ section.settings.announcement_text }}
+          {%- if section.settings.show_emoji -%}
+            <span class="mariana-announcement__emoji">{{ section.settings.emoji }}</span>
+          {%- endif -%}
+        </p>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Mariana Announcement Bar",
+  "class": "mariana-announcement-section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show announcement bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement text",
+      "default": "New Christmas Resin Collection — Releasing Tuesday 9th December"
+    },
+    {
+      "type": "url",
+      "id": "announcement_link",
+      "label": "Link (optional)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_emoji",
+      "label": "Show emoji",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "emoji",
+      "label": "Emoji",
+      "default": "🎄",
+      "info": "Paste an emoji here"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mariana Announcement Bar"
+    }
+  ]
+}
+{% endschema %}
