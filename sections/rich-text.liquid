@@ -17,6 +17,19 @@
 <div class="isolate{% unless section.settings.full_width %} page-width{% endunless %}">
   <div class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
     <div class="rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
+      {% if section.settings.color_scheme == 'scheme-1' %}
+      <div class="mez-announcement">
+        <div class="mez-pill">XMAS RESIN RELEASE</div>
+
+        <h2>resin works by mariana mezic</h2>
+
+        <p>A limited collection of hand-poured resin pieces for people who feel in colour.</p>
+
+        <a href="/collections/xmas-resin" class="mez-cta">
+          shop the xmas resin release
+        </a>
+      </div>
+      {% endif %}
       <div class="rich-text__blocks {{ section.settings.content_alignment }}">
         {%- for block in section.blocks -%}
           {%- case block.type -%}
