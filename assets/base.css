@@ -474,3 +474,31 @@ html.no-js .no-js-hidden {
   background-color: rgb(var(--color-background-2, 243, 243, 243));
   color: rgb(var(--color-text, 18, 18, 18));
 }
+
+/* --- MEZ Logo Resize --- */
+.header__heading-logo img {
+  height: 48px !important;
+  width: auto !important;
+}
+
+/* --- MEZ Heart Nav Icon --- */
+.mez-heart-nav img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(255, 105, 130, 0.45));
+}
+
+/* Alignment */
+.mez-heart-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  padding-right: 14px;
+}
+
+/* --- Header Symmetry --- */
+.header__heading {
+  padding-left: 14px;
+}
