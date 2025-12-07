@@ -1219,7 +1219,7 @@
         "step": 2,
         "unit": "px",
         "label": "Shadow blur",
-        "default": 5
+        "default": 4
       }
     ]
   },
@@ -1284,7 +1284,7 @@
         "step": 2,
         "unit": "px",
         "label": "Shadow blur",
-        "default": 5
+        "default": 4
       }
     ]
   },
