@@ -396,7 +396,7 @@
             "default": "#FFFFFF"
           },
           {
-            "type": "color_background_gradient",
+            "type": "color_background",
             "id": "background_gradient",
             "label": "Background gradient"
           },
@@ -432,16 +432,19 @@
           }
         ],
         "role": {
-          "background": "background",
           "text": "text",
+          "background": {
+            "solid": "background",
+            "gradient": "background_gradient"
+          },
           "links": "secondary_button_label",
-          "buttons": "button",
-          "button_labels": "button_label",
-          "secondary_buttons": "background",
-          "secondary_button_labels": "secondary_button_label",
           "icons": "text",
-          "borders": "text",
-          "shadows": "shadow"
+          "primary_button": "button",
+          "on_primary_button": "button_label",
+          "primary_button_border": "button",
+          "secondary_button": "background",
+          "on_secondary_button": "secondary_button_label",
+          "secondary_button_border": "secondary_button_label"
         }
       }
     ]
@@ -1219,7 +1222,7 @@
         "step": 2,
         "unit": "px",
         "label": "Shadow blur",
-        "default": 5
+        "default": 4
       }
     ]
   },
@@ -1284,7 +1287,7 @@
         "step": 2,
         "unit": "px",
         "label": "Shadow blur",
-        "default": 5
+        "default": 4
       }
     ]
   },
