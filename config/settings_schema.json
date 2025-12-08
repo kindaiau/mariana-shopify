@@ -383,69 +383,14 @@
     "settings": [
       {
         "type": "paragraph",
-        "content": "Define reusable color schemes for different sections of your theme."
+        "content": "Define reusable color schemes for the theme."
       },
       {
         "type": "color_scheme_group",
         "id": "color_schemes",
-        "definition": [
-          {
-            "type": "color",
-            "id": "background",
-            "label": "Background",
-            "default": "#FFFFFF"
-          },
-          {
-            "type": "color_background",
-            "id": "background_gradient",
-            "label": "Background gradient"
-          },
-          {
-            "type": "color",
-            "id": "text",
-            "label": "Text",
-            "default": "#121212"
-          },
-          {
-            "type": "color",
-            "id": "button",
-            "label": "Button background",
-            "default": "#121212"
-          },
-          {
-            "type": "color",
-            "id": "button_label",
-            "label": "Button text",
-            "default": "#FFFFFF"
-          },
-          {
-            "type": "color",
-            "id": "secondary_button_label",
-            "label": "Secondary button text",
-            "default": "#121212"
-          },
-          {
-            "type": "color",
-            "id": "shadow",
-            "label": "Shadow",
-            "default": "#121212"
-          }
-        ],
-        "role": {
-          "text": "text",
-          "background": {
-            "solid": "background",
-            "gradient": "background_gradient"
-          },
-          "links": "secondary_button_label",
-          "icons": "text",
-          "primary_button": "button",
-          "on_primary_button": "button_label",
-          "primary_button_border": "button",
-          "secondary_button": "background",
-          "on_secondary_button": "secondary_button_label",
-          "secondary_button_border": "secondary_button_label"
-        }
+        "default": "scheme-1",
+        "label": "Color scheme",
+        "info": "Used across all sections."
       }
     ]
   },
