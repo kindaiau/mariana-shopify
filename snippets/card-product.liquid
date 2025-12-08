@@ -363,12 +363,14 @@
                     aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
                     aria-live="polite"
                     data-sold-out-message="true"
-                    {% if card_product.selected_or_first_available_variant.available == false %}
+                    {% if card_product.available == false and card_product.published_at == nil or card_product.selected_or_first_available_variant.available == false %}
                       disabled
                     {% endif %}
                   >
                     <span>
-                      {%- if card_product.selected_or_first_available_variant.available -%}
+                      {%- if card_product.available == false and card_product.published_at == nil -%}
+                        Coming Soon
+                      {%- elsif card_product.selected_or_first_available_variant.available -%}
                         {{ 'products.product.add_to_cart' | t }}
                       {%- else -%}
                         {{ 'products.product.sold_out' | t }}
