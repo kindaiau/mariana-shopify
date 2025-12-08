@@ -408,45 +408,21 @@
           },
           {
             "type": "color",
-            "id": "link",
-            "label": "Links",
+            "id": "button",
+            "label": "Button background",
             "default": "#121212"
           },
           {
             "type": "color",
-            "id": "primary_button",
-            "label": "Primary button",
-            "default": "#C63855"
-          },
-          {
-            "type": "color",
-            "id": "on_primary_button",
-            "label": "Primary button text",
+            "id": "button_label",
+            "label": "Button label",
             "default": "#FFFFFF"
           },
           {
             "type": "color",
-            "id": "secondary_button",
-            "label": "Secondary button",
-            "default": "#F2BACD"
-          },
-          {
-            "type": "color",
-            "id": "on_secondary_button",
-            "label": "Secondary button text",
-            "default": "#333333"
-          },
-          {
-            "type": "color",
-            "id": "primary_button_border",
-            "label": "Primary button border",
-            "default": "#C63855"
-          },
-          {
-            "type": "color",
-            "id": "secondary_button_border",
-            "label": "Secondary button border",
-            "default": "#F2BACD"
+            "id": "secondary_button_label",
+            "label": "Secondary button label",
+            "default": "#121212"
           },
           {
             "type": "color",
@@ -473,13 +449,9 @@
             "gradient": "background_gradient"
           },
           "text": "text",
-          "links": "link",
-          "primary_button": "primary_button",
-          "on_primary_button": "on_primary_button",
-          "secondary_button": "secondary_button",
-          "on_secondary_button": "on_secondary_button",
-          "primary_button_border": "primary_button_border",
-          "secondary_button_border": "secondary_button_border",
+          "button": "button",
+          "button_label": "button_label",
+          "secondary_button_label": "secondary_button_label",
           "borders": "border",
           "icons": "icon",
           "shadows": "shadow"
