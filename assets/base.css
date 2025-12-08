@@ -475,30 +475,24 @@ html.no-js .no-js-hidden {
   color: rgb(var(--color-text, 18, 18, 18));
 }
 
-/* --- MEZ Logo Resize --- */
-.header__heading-logo img {
-  height: 48px !important;
-  width: auto !important;
+/* Clean collection card layout */
+.collection-card-wrapper .card,
+.collection-card-wrapper .card__inner {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
 }
 
-/* --- MEZ Heart Nav Icon --- */
-.mez-heart-nav img {
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
-  filter: drop-shadow(0 0 6px rgba(255, 105, 130, 0.45));
+.collection-card-wrapper .card__media,
+.collection-card-wrapper .card__media .media {
+  border-radius: 0;
 }
 
-/* Alignment */
-.mez-heart-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: auto;
-  padding-right: 14px;
+.collection-card-wrapper .card__media img {
+  width: 100%;
+  height: auto;
 }
 
-/* --- Header Symmetry --- */
-.header__heading {
-  padding-left: 14px;
+.collection-card-wrapper .card__content {
+  text-align: center;
 }

@@ -1,3 +1,8 @@
+:root {
+  --mez-logo-size-desktop: 88px;
+  --mez-logo-size-mobile: 66px;
+}
+
 /* Custom header enhancements */
 .section-header .header-wrapper {
   background: transparent;
@@ -15,10 +20,19 @@
   align-items: center;
 }
 
+header-drawer {
+  justify-self: start;
+  margin-left: 0;
+}
+
 .header__heading-logo,
 .header__heading-logo.motion-reduce {
   background: transparent;
   filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.15));
+}
+
+.header__heading-link {
+  padding-left: 1.2rem;
 }
 
 .shopify-section-header-sticky .header-wrapper,
@@ -47,13 +61,38 @@
 .header__heading-logo img {
   width: auto;
   height: auto;
-  max-height: 80px;
+  max-height: var(--mez-logo-size-desktop);
 }
 
 @media screen and (max-width: 749px) {
   .header__heading-logo svg,
   .header__heading-logo img {
-    max-height: 60px;
+    max-height: var(--mez-logo-size-mobile);
+  }
+}
+
+.header__icon--menu .mez-heart-icon {
+  height: var(--mez-logo-size-mobile);
+  width: auto;
+  display: block;
+  animation: mez-pulse 4s ease infinite;
+}
+
+@media screen and (min-width: 750px) {
+  .header__icon--menu .mez-heart-icon {
+    height: var(--mez-logo-size-desktop);
+  }
+}
+
+@keyframes mez-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 

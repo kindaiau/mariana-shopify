@@ -12,7 +12,24 @@
       aria-label="{{ 'sections.header.menu' | t }}"
     >
       <span>
-        {{- 'icon-hamburger.svg' | inline_asset_content -}}
+        <svg
+          class="mez-heart-icon"
+          viewBox="0 0 64 64"
+          role="img"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient id="mez-heart-gradient-{{ section.id }}" x1="0%" x2="100%" y1="0%" y2="100%">
+              <stop offset="0%" stop-color="#ff46cb" />
+              <stop offset="100%" stop-color="#ff1f5a" />
+            </linearGradient>
+          </defs>
+          <path
+            fill="url(#mez-heart-gradient-{{ section.id }})"
+            d="M32 58s-3.3-2.5-8.4-6.7C16 45 6 36.5 6 24.8 6 16.5 12.3 10 20.4 10c4.5 0 8.7 2.5 11.6 6.4C34.9 12.5 39 10 43.6 10 51.7 10 58 16.5 58 24.8 58 36.5 48 45 40.4 51.3 35.3 55.5 32 58 32 58Z"
+          />
+        </svg>
         {{- 'icon-close.svg' | inline_asset_content -}}
       </span>
     </summary>

@@ -13,7 +13,10 @@
   if section.settings.show_social and has_social
     assign show_social = true
   endif
-  assign show_country_selector = section.settings.enable_country_selector and localization.available_countries.size > 1
+  assign show_country_selector = false
+  if section.settings.enable_country_selector and localization.available_countries.size > 1
+    assign show_country_selector = true
+  endif
   assign show_language_selector = section.settings.enable_language_selector and localization.available_languages.size > 1
 -%}
 
@@ -181,7 +184,7 @@
         {
           "type": "text",
           "id": "text",
-          "default": "Welcome to our store",
+          "default": "Xmas Resin Release – Tuesday 9th",
           "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
         },
         {
