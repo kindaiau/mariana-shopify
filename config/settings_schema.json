@@ -383,14 +383,107 @@
     "settings": [
       {
         "type": "paragraph",
-        "content": "Define reusable color schemes for the theme."
+        "content": "Define reusable color schemes for different sections of your theme."
       },
       {
         "type": "color_scheme_group",
         "id": "color_schemes",
-        "default": "scheme-1",
-        "label": "Color scheme",
-        "info": "Used across all sections."
+        "definition": [
+          {
+            "type": "color",
+            "id": "background",
+            "label": "Background",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "color_background",
+            "id": "background_gradient",
+            "label": "Background gradient"
+          },
+          {
+            "type": "color",
+            "id": "text",
+            "label": "Text",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "link",
+            "label": "Links",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "primary_button",
+            "label": "Primary button",
+            "default": "#C63855"
+          },
+          {
+            "type": "color",
+            "id": "on_primary_button",
+            "label": "Primary button text",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "color",
+            "id": "secondary_button",
+            "label": "Secondary button",
+            "default": "#F2BACD"
+          },
+          {
+            "type": "color",
+            "id": "on_secondary_button",
+            "label": "Secondary button text",
+            "default": "#333333"
+          },
+          {
+            "type": "color",
+            "id": "primary_button_border",
+            "label": "Primary button border",
+            "default": "#C63855"
+          },
+          {
+            "type": "color",
+            "id": "secondary_button_border",
+            "label": "Secondary button border",
+            "default": "#F2BACD"
+          },
+          {
+            "type": "color",
+            "id": "border",
+            "label": "Borders",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "icon",
+            "label": "Icons",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "shadow",
+            "label": "Shadow",
+            "default": "#121212"
+          }
+        ],
+        "role": {
+          "background": {
+            "solid": "background",
+            "gradient": "background_gradient"
+          },
+          "text": "text",
+          "links": "link",
+          "primary_button": "primary_button",
+          "on_primary_button": "on_primary_button",
+          "secondary_button": "secondary_button",
+          "on_secondary_button": "on_secondary_button",
+          "primary_button_border": "primary_button_border",
+          "secondary_button_border": "secondary_button_border",
+          "borders": "border",
+          "icons": "icon",
+          "shadows": "shadow"
+        }
       }
     ]
   },
