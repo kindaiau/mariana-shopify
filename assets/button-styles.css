@@ -16,3 +16,48 @@ button,
   display: inline-block !important;     /* keeps them anchored properly */
   margin: 8px 0 !important;             /* consistent spacing */
 }
+
+/* =============================================
+   MARIANA MEZIC BRAND FIXES
+   Brand green: #1a5c45
+   ============================================= */
+
+/* 1. Remove the big pink circle slider buttons on the product image gallery */
+.slider-button,
+.product__media-wrapper .slider-button,
+.product__media-container .slider-button,
+.slider-buttons .slider-button {
+  display: none !important;
+}
+
+/* 2. Change the purple "Buy with Shop" / Shop Pay button to brand green */
+/* Targets the shopify-accelerated-checkout (Shop Pay) button */
+shopify-accelerated-checkout,
+shopify-accelerated-checkout .shopify-payment-button__button,
+.shopify-payment-button__button,
+.shopify-payment-button__button--unbranded {
+  background-color: #1a5c45 !important;
+  color: #ffffff !important;
+  border-color: #1a5c45 !important;
+}
+
+/* Target the inner wallet/shop button rendered inside the web component */
+shopify-accelerated-checkout [data-testid="Wallet-button"],
+shopify-accelerated-checkout button,
+shopify-accelerated-checkout .wallet-cart-button,
+shopify-accelerated-checkout .shopify-payment-button__button {
+  background-color: #1a5c45 !important;
+  background: #1a5c45 !important;
+  color: #ffffff !important;
+}
+
+/* Override any inline purple/violet background on the Shop Pay button */
+.shopify-payment-button .shopify-payment-button__button:not([disabled]) {
+  background-color: #1a5c45 !important;
+  color: #ffffff !important;
+}
+
+/* "More payment options" link — match brand green */
+.shopify-payment-button__more-options {
+  color: #1a5c45 !important;
+}
