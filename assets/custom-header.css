@@ -107,3 +107,9 @@ header-drawer {
     padding-bottom: 0.6rem;
   }
 }
+
+/* Hide zoom magnifier circle button on product images */
+.product__media-zoom-lightbox,
+.product__media-zoom-hover {
+  display: none !important;
+}
